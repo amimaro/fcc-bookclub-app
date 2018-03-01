@@ -2,26 +2,17 @@
   <div class="hero-head">
     <nav class="navbar">
       <div class="container">
-        <div class="navbar-brand">
-          <a href="https://bulma.io" target="_blank">
-            <img src="assets/made-with-bulma.png" alt="Made with Bulma" width="256" height="48">
-          </a>
-          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item" [routerLink]="['/']">
               Home
             </a>
-            <a class="navbar-item" [routerLink]="['/profile']">
+            <a class="navbar-item" [routerLink]="['/profile']" *ngIf="appService.isLoggedIn">
               Profile
             </a>
             <a class="navbar-item" [routerLink]="['/login']">
-              Login
+              <span class="icon"><i class="fa fa-twitter"></i></span>
+              <span>Login with Twitter</span>
             </a>
           </div>
         </div>
@@ -34,7 +25,12 @@
         fcc-bookclub-app
       </h1>
       <h2 class="subtitle">
-        Source available at client/app/app.component.html to get started
+        <p>
+          <a href="https://www.freecodecamp.org/challenges/manage-a-book-trading-club" target="_blank">
+            freeCodeCamp - Manage a Book Trading
+          </a>
+        </p>
+        <p>by <a href="https://github.com/amimaro" target="_blank">Amimaro</a></p>
       </h2>
     </div>
   </div>
