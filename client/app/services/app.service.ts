@@ -39,21 +39,9 @@ export class AppService {
         console.log(this.isLoggedIn)
       });
   }
-
-  loginFacebook() {
-    window.location.href = '/api/user/auth/facebook/login';
-  }
-
+  
   loginTwitter() {
     window.location.href = '/api/user/auth/twitter/login';
-  }
-
-  loginGoogle() {
-    window.location.href = '/api/user/auth/google/login';
-  }
-
-  loginGithub() {
-    window.location.href = '/api/user/auth/github/login';
   }
 
 }
