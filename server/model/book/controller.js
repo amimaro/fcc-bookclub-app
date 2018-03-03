@@ -1,11 +1,18 @@
 const Controller = require('../../lib/controller');
 const book = require('./facade');
+const rp = require('request-promise');
 
 class Book extends Controller {
 
   query(req, res, next) {
-    console.log(req.params.query)
-    res.status(200).json(req.params.query)
+    rp('https://www.googleapis.com/books/v1/volumes?q=' + req.params.query)
+      .then(function(data) {
+        console.log(data);
+        res.status(200).json(JSON.parse(data))
+      })
+      .catch(function(err) {
+        res.sendStatus(404);
+      });
   }
 
 }
