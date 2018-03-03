@@ -7,6 +7,12 @@
             <a class="navbar-item" [routerLink]="['/']">
               Home
             </a>
+            <a class="navbar-item" [routerLink]="['/allbooks']" *ngIf="appService.isLoggedIn">
+              All Books
+            </a>
+            <a class="navbar-item" [routerLink]="['/mybooks']" *ngIf="appService.isLoggedIn">
+              My Books
+            </a>
             <a class="navbar-item" [routerLink]="['/profile']" *ngIf="appService.isLoggedIn">
               Profile
             </a>

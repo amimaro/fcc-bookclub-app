@@ -10,6 +10,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 import { AppService } from './services/app.service';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AllBooksComponent } from './pages/all-books/all-books.component';
+import { MyBooksComponent } from './pages/my-books/my-books.component';
 
 const appRoutes: Routes = [
   {
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    AllBooksComponent,
+    MyBooksComponent,
   ],
   imports: [
     BrowserModule,
