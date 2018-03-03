@@ -16,7 +16,7 @@
             <a class="navbar-item" [routerLink]="['/profile']" *ngIf="appService.isLoggedIn">
               Profile
             </a>
-            <a class="navbar-item" (click)="appService.loginTwitter()">
+            <a class="navbar-item" (click)="appService.loginTwitter()" *ngIf="!appService.isLoggedIn">
               <span class="icon"><i class="fa fa-twitter"></i></span>
               <span>Login with Twitter</span>
             </a>
