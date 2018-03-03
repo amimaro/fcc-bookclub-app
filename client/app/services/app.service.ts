@@ -14,7 +14,7 @@ export class AppService {
     private router: Router,
     private http: HttpClient
   ) {
-
+    this.getIsLoggedIn();
   }
 
   routeTo(route) {
@@ -39,7 +39,7 @@ export class AppService {
         console.log(this.isLoggedIn)
       });
   }
-  
+
   loginTwitter() {
     window.location.href = '/api/user/auth/twitter/login';
   }
