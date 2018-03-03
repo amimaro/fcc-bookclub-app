@@ -22,6 +22,14 @@ const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent
   },
+  {
+    path: 'allbooks',
+    component: AllBooksComponent
+  },
+  {
+    path: 'mybooks',
+    component: MyBooksComponent
+  },
   { path: '**', component: NotFoundComponent }
 ];
 
