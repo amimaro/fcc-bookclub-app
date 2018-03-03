@@ -9,6 +9,8 @@ export class AppService {
   message: string = "";
   apiUrl: string = 'http://localhost:8080/api/'
   isLoggedIn: boolean = false;
+  searchedBooks: any = [];
+  availableBooks: any = [];
 
   constructor(
     private router: Router,
@@ -51,7 +53,7 @@ export class AppService {
 
   updateProfile() {
     this.http.put('/api/user/' + this.user._id, this.user)
-    .subscribe(
+      .subscribe(
       res => {
         alert('Updated Successfully!')
         console.log(res);
@@ -59,7 +61,50 @@ export class AppService {
       err => {
         console.error(err);
       }
-    )
+      )
+  }
+
+  searchBook(query) {
+    if (query != "") {
+      this.http.get(this.apiUrl + 'book/query/' + query)
+        .subscribe(
+        res => {
+          console.log(res);
+          this.searchedBooks = res;
+        },
+        err => {
+          console.error(err);
+        }
+        )
+    } else {
+      alert('Enter some text');
+    }
+  }
+
+  getBooks() {
+    this.http.get(this.apiUrl + 'book/')
+      .subscribe(
+      res => {
+        console.log(res);
+        this.availableBooks = res;
+      },
+      err => {
+        console.error(err);
+      }
+      )
+  }
+
+  getBooksByUser() {
+    this.http.get(this.apiUrl + 'book/user/' + this.user._id)
+      .subscribe(
+      res => {
+        console.log(res);
+        this.availableBooks = res;
+      },
+      err => {
+        console.error(err);
+      }
+      )
   }
 
 }

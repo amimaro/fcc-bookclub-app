@@ -15,6 +15,10 @@ class Book extends Controller {
       });
   }
 
+  findByUser(req, res, next) {
+    res.sendStatus(200);
+  }
+
 }
 
 module.exports = new Book(book);
