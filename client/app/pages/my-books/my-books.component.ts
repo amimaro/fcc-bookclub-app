@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AppService } from '../../services/app.service';
+
 @Component({
   selector: 'app-my-books',
   templateUrl: './my-books.component.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyBooksComponent implements OnInit {
 
-  constructor() { }
+  constructor(public appService: AppService) { }
 
   ngOnInit() {
+  }
+
+  addBook() {
+
   }
 
 }

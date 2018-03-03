@@ -1,3 +1,54 @@
-<p>
-  my-books works!
-</p>
+<br>
+<div class="field is-grouped pull-right">
+  <div class="control">
+    <button class="button is-success">Your Trade Requests</button>
+  </div>
+  <div class="control">
+    <button class="button is-info">Trade Requests for you</button>
+  </div>
+</div>
+
+<h3 class="subtitle">My Books</h3>
+<hr>
+<div class="field has-addons">
+  <div class="control" style="width: 100%">
+    <input type="text" class="input is-info is-medium" style="text-transform:uppercase" [(ngModel)]="bookSearch" (keyup.enter)="addBook()" placeholder="Add Book">
+  </div>
+  <div class="control">
+    <a class="button is-success is-medium" (click)="addBook()">Add</a>
+  </div>
+</div>
+
+<br>
+
+<div class="columns is-multiline is-mobile has-text-centered">
+  <div class="column is-one-quarter" *ngFor="let book of appService.myBooks">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">John Smith</p>
+            <p class="subtitle is-6">@johnsmith</p>
+          </div>
+        </div>
+
+        <div class="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+          <a href="#">#css</a> <a href="#">#responsive</a>
+          <br>
+          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
