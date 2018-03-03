@@ -6,10 +6,23 @@
     <article class="media">
       <div class="media-content">
         <div class="content">
-          <div class="is-pulled-right">
-            <a class="button" href="/api/user/auth/logout">
-              Logout
-            </a>
+          <h3 class="subtitle">Update Profile</h3>
+          <div class="field">
+            <label class="label">City</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Enter city" [(ngModel)]="city">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">State</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Enter State" [(ngModel)]="state">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" (click)="updateProfile()">Update</button>
+            </div>
           </div>
         </div>
       </div>
@@ -19,17 +32,12 @@
     <article class="media">
       <div class="media-content">
         <div class="content">
-          <p class="subtitle">Twitter Login</p>
+          <p class="subtitle">Twitter Account</p>
           <p><strong>Id:</strong> {{ user._id }}</p>
           <p><strong>Twitter Id:</strong> {{ user.twitter.id }}</p>
           <p><strong>Token:</strong> {{ user.twitter.token }}</p>
           <p><strong>Username:</strong> {{ user.twitter.username }}</p>
           <p><strong>Display Name:</strong> {{ user.twitter.displayName }}</p>
-          <div class="is-pulled-right 	">
-            <a class="button" href="/api/user/unlink/twitter">
-              Unlink
-            </a>
-          </div>
         </div>
       </div>
     </article>

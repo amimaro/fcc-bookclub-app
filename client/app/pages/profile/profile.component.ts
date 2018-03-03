@@ -10,8 +10,10 @@ import { AppService } from '../../services/app.service';
 export class ProfileComponent implements OnInit {
 
   user: any;
+  city: string = "";
+  state: string = "";
 
-  constructor(private appService: AppService) {
+  constructor(public appService: AppService) {
     this.appService.getSession().subscribe(
       res => {
         console.log(res);
@@ -25,6 +27,13 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  updateProfile() {
+    this.appService.updateProfile({
+      city: this.city,
+      state: this.state
+    })
   }
 
 }

@@ -32,6 +32,7 @@ export class AppService {
       .subscribe(
       res => {
         this.isLoggedIn = true;
+        this.user = res;
         console.log(this.isLoggedIn)
       },
       err => {
@@ -42,6 +43,15 @@ export class AppService {
 
   loginTwitter() {
     window.location.href = '/api/user/auth/twitter/login';
+  }
+
+  logout() {
+    window.location.href = '/api/user/auth/logout';
+  }
+
+  updateProfile(form) {
+    console.log(this.user)
+    // return this.http.post('/api/user / ', form)
   }
 
 }
