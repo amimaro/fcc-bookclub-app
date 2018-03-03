@@ -10,8 +10,6 @@ import { AppService } from '../../services/app.service';
 export class ProfileComponent implements OnInit {
 
   user: any;
-  city: string = "";
-  state: string = "";
 
   constructor(public appService: AppService) {
     this.appService.getSession().subscribe(
@@ -30,10 +28,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile() {
-    this.appService.updateProfile({
-      city: this.city,
-      state: this.state
-    })
+    this.appService.updateProfile();
   }
 
 }

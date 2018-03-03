@@ -49,9 +49,17 @@ export class AppService {
     window.location.href = '/api/user/auth/logout';
   }
 
-  updateProfile(form) {
-    console.log(this.user)
-    // return this.http.post('/api/user / ', form)
+  updateProfile() {
+    this.http.put('/api/user/' + this.user._id, this.user)
+    .subscribe(
+      res => {
+        alert('Updated Successfully!')
+        console.log(res);
+      },
+      err => {
+        console.error(err);
+      }
+    )
   }
 
 }
