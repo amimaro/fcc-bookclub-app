@@ -11,7 +11,7 @@
 <h3 class="subtitle">All Books</h3>
 <hr>
 <div class="columns is-multiline is-mobile has-text-centered">
-  <div class="column is-one-quarter">
+  <div class="column is-one-quarter" *ngFor="let book of appService.availableBooks">
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
