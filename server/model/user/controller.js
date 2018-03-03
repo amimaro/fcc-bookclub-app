@@ -13,7 +13,7 @@ class UserController extends Controller {
   // Logout
   logout(req, res, next) {
     req.logout();
-    res.redirect('/login');
+    res.redirect('/');
   }
 
   // Twitter
