@@ -37,6 +37,8 @@ module.exports = function(passport) {
               newUser.twitter.token = token;
               newUser.twitter.username = profile.username;
               newUser.twitter.displayName = profile.displayName;
+              newUser.city = "";
+              newUser.state = "";
               newUser.save(function(err) {
                 if (err)
                   throw err;

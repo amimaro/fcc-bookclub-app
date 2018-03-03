@@ -9,6 +9,8 @@ const userSchema = new Schema({
     displayName: String,
     username: String
   },
+  city: String,
+  state: String
 });
 
 userSchema.methods.generateHash = function(password) {
