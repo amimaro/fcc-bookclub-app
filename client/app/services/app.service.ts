@@ -11,6 +11,7 @@ export class AppService {
   isLoggedIn: boolean = false;
   searchedBooks: any = [];
   availableBooks: any = [];
+  myBooks: any = [];
 
   constructor(
     private router: Router,
