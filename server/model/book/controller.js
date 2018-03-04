@@ -4,6 +4,17 @@ const rp = require('request-promise');
 
 class Book extends Controller {
 
+  create(req, res, next) {
+    if (req.isAuthenticated()) {
+      req.body.userId = req.user._id
+      this.facade.create(req.body)
+        .then(doc => res.status(201).json(doc))
+        .catch(err => next(err));
+    } else {
+      res.sendStatus(401);
+    }
+  }
+
   query(req, res, next) {
     rp('https://www.googleapis.com/books/v1/volumes?q=' + req.params.query)
       .then(function(data) {

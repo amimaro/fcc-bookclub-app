@@ -2,6 +2,12 @@ const controller = require('./controller');
 const Router = require('express').Router;
 const router = new Router();
 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  res.redirect('/');
+}
+
 router.route('/')
   .get((...args) => controller.find(...args))
   .post((...args) => controller.create(...args));

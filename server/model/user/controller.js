@@ -44,7 +44,7 @@ class UserController extends Controller {
         return next(err);
       if (data)
         req.session.user = data
-      res.redirect('/profile')
+      res.redirect('/')
     })(req, res, next);
   }
 
@@ -58,7 +58,7 @@ class UserController extends Controller {
       })
       .then((results) => {
         delete req.user.twitter
-        res.redirect('/profile');
+        res.redirect('/');
       })
       .catch(err => next(err));
   }
