@@ -31,4 +31,12 @@ export class TradesComponent implements OnInit {
       });
   }
 
+  confirmTrade(book) {
+
+  }
+
+  cancelTrade(book) {
+
+  }
+
 }

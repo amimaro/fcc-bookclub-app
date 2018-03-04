@@ -1,10 +1,30 @@
 <br>
 <h1 class="subtitle">{{ title }}</h1>
 <hr>
-<div class="has-text-centered">
-  <p class="subtitle">Catalogue Your Books Online</p>
-  <p class="subtitle">See All of the Books Our Users Own</p>
-  <p class="subtitle">Request to Borrow Other Users Books</p>
-  <p class="subtitle">Easily Manage Books and Request From Your Dashboard</p>
+<div class="columns is-multiline is-mobile has-text-centered">
+  <div class="column is-one-quarter" *ngFor="let book of appService.availableBooks">
+    <div class="card" *ngIf="book.owner._id != appService.user._id">
+      <div class="card-image">
+        <figure class="image is-3by4">
+          <img src="{{ book.img }}" alt="Placeholder image">
+          <button class="button up-left is-medium is-success" (click)="confirmTrade(book)">
+            <span class="icon"><i class="fa fa-check"></i></span>
+          </button>
+          <button class="button up-right is-medium is-danger" (click)="cancelTrade(book)">
+            <span class="icon"><i class="fa fa-times"></i></span>
+          </button>
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ book.title }}</p>
+            <p class="subtitle is-6">{{ book.author }}</p>
+            <p class="subtitle is-6">Owner: {{ book.owner.twitter.username }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <br>
