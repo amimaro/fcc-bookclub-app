@@ -12,6 +12,7 @@ import { AppService } from './services/app.service';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AllBooksComponent } from './pages/all-books/all-books.component';
 import { MyBooksComponent } from './pages/my-books/my-books.component';
+import { TradesComponent } from './trades/trades.component';
 
 const appRoutes: Routes = [
   {
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     AllBooksComponent,
     MyBooksComponent,
+    TradesComponent,
   ],
   imports: [
     BrowserModule,
