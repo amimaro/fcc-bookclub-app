@@ -21,6 +21,7 @@ export class MyBooksComponent implements OnInit {
         console.log(err);
         this.appService.routeTo(['/'])
       });
+      this.appService.getBooksByUser();
   }
 
   ngOnInit() {

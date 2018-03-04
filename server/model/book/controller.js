@@ -27,7 +27,15 @@ class Book extends Controller {
   }
 
   findByUser(req, res, next) {
-    res.sendStatus(200);
+    if (req.isAuthenticated()) {
+      return this.facade.find({
+          userId: req.user._id
+        })
+        .then(collection => res.status(200).json(collection))
+        .catch(err => next(err));
+    } else {
+      res.sendStatus(401);
+    }
   }
 
 }

@@ -82,7 +82,7 @@ export class AppService {
     }
   }
 
-  getBooks() {
+  getAllBooks() {
     this.http.get(this.apiUrl + 'book/')
       .subscribe(
       res => {
@@ -96,16 +96,15 @@ export class AppService {
   }
 
   getBooksByUser() {
-    this.http.get(this.apiUrl + 'book/user/' + this.user._id)
+    this.http.get(this.apiUrl + 'book/user')
       .subscribe(
       res => {
         console.log(res);
-        this.availableBooks = res;
+        this.myBooks = res;
       },
       err => {
         console.error(err);
-      }
-      )
+      })
   }
 
   addBook(data) {
@@ -120,6 +119,7 @@ export class AppService {
       res => {
         alert('Book Added Successfully!');
         console.log(res);
+        this.getBooksByUser();
       },
       err => {
         console.error(err);
