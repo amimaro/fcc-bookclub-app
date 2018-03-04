@@ -25,11 +25,8 @@ export class AllBooksComponent implements OnInit {
   ngOnInit() {
   }
 
-  renderRequestedClass(requested) {
-    if (requested)
-      return "is-warning";
-    else
-      return "is-success";
+  renderRequestedClass(book) {
+    return book.owner._id != book.tradeId ? "is-warning" : "is-success";
   }
 
   requestTrade(book) {

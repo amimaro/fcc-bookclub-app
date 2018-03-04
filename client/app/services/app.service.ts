@@ -12,6 +12,8 @@ export class AppService {
   searchedBooks: any = [];
   availableBooks: any = [];
   myBooks: any = [];
+  countMyTrades: any = 0;
+  countTradesForMe: any = 0;
 
   constructor(
     private router: Router,
@@ -88,6 +90,18 @@ export class AppService {
       res => {
         console.log(res);
         this.availableBooks = res;
+        this.countMyTrades = 0;
+        this.countTradesForMe = 0;
+        this.availableBooks.map((book) => {
+          // Count my trades
+          if(this.user._id == book.tradeId && this.user._id != book.owner._id) {
+            this.countMyTrades++;
+          }
+          //Count trades for me
+          if(this.user._id != book.tradeId && this.user._id == book.owner._id) {
+            this.countTradesForMe++;
+          }
+        })
       },
       err => {
         console.error(err);
@@ -126,18 +140,21 @@ export class AppService {
       })
   }
 
-  requestTrade(data) {
-    let book = {
-
+  requestTrade(book) {
+    if (book.tradeId == book.owner._id) {
+      this.http.put(this.apiUrl + 'book/trade/' + book._id, book)
+        .subscribe(
+        res => {
+          console.log(res);
+          this.countMyTrades++;
+          this.getAllBooks();
+        },
+        err => {
+          console.error(err);
+        })
+    } else {
+      alert('Sorry, it was already chosen...');
     }
-    this.http.post(this.apiUrl + 'book/trade', book)
-      .subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.error(err);
-      })
   }
 
 }

@@ -1,23 +1,24 @@
 <br>
 <div class="field is-grouped pull-right">
   <div class="control">
-    <button class="button is-success">Your Trade Requests</button>
+    <button class="button is-success">Your Trade Requests: {{ appService.countMyTrades }}</button>
   </div>
   <div class="control">
-    <button class="button is-info">Trade Requests for you</button>
+    <button class="button is-info">Trade Requests for you: {{ appService.countTradesForMe }}</button>
   </div>
 </div>
 
 <h3 class="subtitle">All Books</h3>
 <hr>
-<p>Click on <span class="icon"><i class="fa fa-exchange"></i></span> to request a trade!</p>
+<p class="subtitle">Click on <span class="icon"><i class="fa fa-exchange"></i></span> to request a trade!</p>
+<hr>
 <div class="columns is-multiline is-mobile has-text-centered">
   <div class="column is-one-quarter" *ngFor="let book of appService.availableBooks">
-    <div class="card" *ngIf="book.userId != appService.user._id">
+    <div class="card" *ngIf="book.owner._id != appService.user._id">
       <div class="card-image">
         <figure class="image is-3by4">
           <img src="{{ book.img }}" alt="Placeholder image">
-          <button class="button up-right is-medium" [ngClass]="renderRequestedClass(book.requested)" (click)="requestTrade(book)">
+          <button class="button up-right is-medium" [ngClass]="renderRequestedClass(book)" (click)="requestTrade(book)">
             <span class="icon"><i class="fa fa-exchange"></i></span>
           </button>
         </figure>
@@ -27,6 +28,7 @@
           <div class="media-content">
             <p class="title is-4">{{ book.title }}</p>
             <p class="subtitle is-6">{{ book.author }}</p>
+            <p class="subtitle is-6">Owner: {{ book.owner.twitter.username }}</p>
           </div>
         </div>
       </div>
