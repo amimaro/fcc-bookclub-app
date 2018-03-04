@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
       err => {
         console.log("Error occured");
         console.log(err);
-        this.appService.routeTo(['/login'])
+        this.appService.routeTo(['/'])
       });
   }
 
