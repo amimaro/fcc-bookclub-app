@@ -9,8 +9,11 @@ router.route('/')
 router.route('/query/:query')
   .get((...args) => controller.query(...args));
 
-router.route('/user/')
+router.route('/user')
   .get((...args) => controller.findByUser(...args));
+
+router.route('/trade/:id')
+  .put((...args) => controller.trade(...args));
 
 router.route('/:id')
   .put((...args) => controller.update(...args))

@@ -15,7 +15,10 @@ const book = new Schema({
   bookId: {
     type: String
   },
-  userId: {
+  tradeId: {
+    type: Schema.Types.ObjectId
+  },
+  owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },

@@ -33,7 +33,7 @@ class UserController extends Controller {
       req.login(data, function(err) {
         if (err)
           return next(err);
-        return res.redirect('/profile');
+        return res.redirect('/allbooks');
       });
     })(req, res, next);
   }

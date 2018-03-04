@@ -6,7 +6,7 @@ class Book extends Controller {
 
   create(req, res, next) {
     if (req.isAuthenticated()) {
-      req.body.userId = req.user._id
+      req.body.owner = req.user._id
       this.facade.create(req.body)
         .then(doc => res.status(201).json(doc))
         .catch(err => next(err));
@@ -29,9 +29,26 @@ class Book extends Controller {
   findByUser(req, res, next) {
     if (req.isAuthenticated()) {
       return this.facade.find({
-          userId: req.user._id
+          owner: req.user._id
         })
         .then(collection => res.status(200).json(collection))
+        .catch(err => next(err));
+    } else {
+      res.sendStatus(401);
+    }
+  }
+
+  trade(req, res, next) {
+    if (req.isAuthenticated()) {
+      req.body.tradeId = req.user._id
+      console.log(req.body)
+      this.facade.update({ _id: req.params.id }, req.body)
+        .then((results) => {
+          console.log(results)
+          if (results.n < 1) { return res.sendStatus(404); }
+          if (results.nModified < 1) { return res.sendStatus(304); }
+          res.sendStatus(204);
+        })
         .catch(err => next(err));
     } else {
       res.sendStatus(401);
