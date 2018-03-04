@@ -12,14 +12,34 @@
 <hr>
 <div class="field has-addons">
   <div class="control" style="width: 100%">
-    <input type="text" class="input is-info is-medium" style="text-transform:uppercase" [(ngModel)]="bookSearch" (keyup.enter)="addBook()" placeholder="Add Book">
+    <input type="text" class="input is-info is-medium" [(ngModel)]="bookSearch" (keyup.enter)="searchBook()" placeholder="Search Book">
   </div>
   <div class="control">
-    <a class="button is-success is-medium" (click)="addBook()">Add</a>
+    <a class="button is-success is-medium" (click)="searchBook()">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <span>Search</span>
+    </a>
   </div>
 </div>
 
+<table class="table">
+  <thead>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of appService.searchedBooks.items | slice:0:5;">
+      <td>{{book.volumeInfo.title}} - {{book.volumeInfo.authors[0]}}</td>
+      <td>
+        <button class="button is-small is-success" (click)="addBook(book)">
+          <span class="icon"><i class="fa fa-plus"></i></span>
+          <span>Add</span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <br>
+<hr>
 
 <div class="columns is-multiline is-mobile has-text-centered">
   <div class="column is-one-quarter" *ngFor="let book of appService.myBooks">

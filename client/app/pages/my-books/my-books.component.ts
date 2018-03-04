@@ -9,13 +9,19 @@ import { AppService } from '../../services/app.service';
 })
 export class MyBooksComponent implements OnInit {
 
+  bookSearch: string = "";
+
   constructor(public appService: AppService) { }
 
   ngOnInit() {
   }
 
-  addBook() {
+  searchBook() {
+    this.appService.searchBook(this.bookSearch);
+  }
 
+  addBook(book) {
+    this.appService.addBook(book);
   }
 
 }

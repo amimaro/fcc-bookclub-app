@@ -108,4 +108,23 @@ export class AppService {
       )
   }
 
+  addBook(data) {
+    let book = {
+      title: data.volumeInfo.title,
+      author: data.volumeInfo.authors[0],
+      img: data.volumeInfo.imageLinks.smallThumbnail,
+      bookId: data.id
+    }
+    console.log(book)
+    // this.http.post(this.apiUrl + 'book/', book)
+    //   .subscribe(
+    //   res => {
+    //     console.log(res);
+    //   },
+    //   err => {
+    //     console.error(err);
+    //   }
+    //   )
+  }
+
 }
