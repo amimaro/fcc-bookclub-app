@@ -11,7 +11,17 @@ export class MyBooksComponent implements OnInit {
 
   bookSearch: string = "";
 
-  constructor(public appService: AppService) { }
+  constructor(public appService: AppService) {
+    this.appService.getSession().subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+        console.log(err);
+        this.appService.routeTo(['/'])
+      });
+  }
 
   ngOnInit() {
   }
