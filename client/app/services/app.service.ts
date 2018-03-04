@@ -115,16 +115,16 @@ export class AppService {
       img: data.volumeInfo.imageLinks.smallThumbnail,
       bookId: data.id
     }
-    console.log(book)
-    // this.http.post(this.apiUrl + 'book/', book)
-    //   .subscribe(
-    //   res => {
-    //     console.log(res);
-    //   },
-    //   err => {
-    //     console.error(err);
-    //   }
-    //   )
+    this.http.post(this.apiUrl + 'book/', book)
+      .subscribe(
+      res => {
+        alert('Book Added Successfully!');
+        console.log(res);
+      },
+      err => {
+        console.error(err);
+      }
+      )
   }
 
 }
