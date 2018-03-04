@@ -1,10 +1,14 @@
 <br>
 <div class="field is-grouped pull-right">
   <div class="control">
-    <button class="button is-success">Your Trade Requests: {{ appService.countMyTrades }}</button>
+    <button class="button is-success" [routerLink]="['/mytrades']">
+      My Trade Requests: {{ appService.countMyTrades }}
+    </button>
   </div>
   <div class="control">
-    <button class="button is-info">Trade Requests for you: {{ appService.countTradesForMe }}</button>
+    <button class="button is-info" [routerLink]="['/tradesforme']">
+      Trade Requests for you: {{ appService.countTradesForMe }}
+    </button>
   </div>
 </div>
 
