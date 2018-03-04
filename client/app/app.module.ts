@@ -12,7 +12,7 @@ import { AppService } from './services/app.service';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AllBooksComponent } from './pages/all-books/all-books.component';
 import { MyBooksComponent } from './pages/my-books/my-books.component';
-import { TradesComponent } from './trades/trades.component';
+import { TradesComponent } from './pages/trades/trades.component';
 
 const appRoutes: Routes = [
   {
@@ -30,6 +30,20 @@ const appRoutes: Routes = [
   {
     path: 'mybooks',
     component: MyBooksComponent
+  },
+  {
+    path: 'mytrades',
+    component: TradesComponent,
+    data: {
+      trade: 'My Trade Requests'
+    }
+  },
+  {
+    path: 'tradesforme',
+    component: TradesComponent,
+    data: {
+      trade: 'Trade Requests for me'
+    }
   },
   { path: '**', component: NotFoundComponent }
 ];
@@ -50,7 +64,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // debugging purpose
+      { enableTracing: false } // debugging purpose
     )
   ],
   providers: [

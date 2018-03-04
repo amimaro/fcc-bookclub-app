@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-trades',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TradesComponent implements OnInit {
 
-  constructor() { }
+  title: string = "";
+
+  constructor(public route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route
+      .data
+      .subscribe(data => {
+        this.title = data.trade;
+      });
   }
 
 }
