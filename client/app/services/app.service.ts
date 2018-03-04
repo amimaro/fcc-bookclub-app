@@ -123,8 +123,21 @@ export class AppService {
       },
       err => {
         console.error(err);
-      }
-      )
+      })
+  }
+
+  requestTrade(data) {
+    let book = {
+
+    }
+    this.http.post(this.apiUrl + 'book/trade', book)
+      .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.error(err);
+      })
   }
 
 }

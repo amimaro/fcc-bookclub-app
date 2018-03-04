@@ -25,4 +25,15 @@ export class AllBooksComponent implements OnInit {
   ngOnInit() {
   }
 
+  renderRequestedClass(requested) {
+    if (requested)
+      return "is-warning";
+    else
+      return "is-success";
+  }
+
+  requestTrade(book) {
+    this.appService.requestTrade(book);
+  }
+
 }
