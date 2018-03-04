@@ -19,6 +19,7 @@ export class AllBooksComponent implements OnInit {
         console.log(err);
         this.appService.routeTo(['/'])
       });
+    this.appService.getAllBooks();
   }
 
   ngOnInit() {
