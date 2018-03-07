@@ -30,10 +30,10 @@
   <thead>
   </thead>
   <tbody>
-    <tr *ngFor="let book of appService.searchedBooks.items | slice:0:5;">
+    <tr *ngFor="let book of appService.searchedBooks; let i = index">
       <td>{{book.volumeInfo.title}} - {{book.volumeInfo.authors[0]}}</td>
       <td>
-        <button class="button is-small is-success" (click)="addBook(book)">
+        <button class="button is-small is-success" (click)="addBook(book, i)">
           <span class="icon"><i class="fa fa-plus"></i></span>
           <span>Add</span>
         </button>
