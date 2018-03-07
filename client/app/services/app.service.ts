@@ -9,9 +9,12 @@ export class AppService {
   message: string = "";
   apiUrl: string = 'http://localhost:8080/api/'
   isLoggedIn: boolean = false;
+  myBooks: any = [];
   searchedBooks: any = [];
   availableBooks: any = [];
-  myBooks: any = [];
+  booksMyTrades: any = [];
+  booksTradesForMe: any = [];
+
   countMyTrades: any = 0;
   countTradesForMe: any = 0;
 
@@ -92,14 +95,18 @@ export class AppService {
         this.availableBooks = res;
         this.countMyTrades = 0;
         this.countTradesForMe = 0;
+        this.booksMyTrades = [];
+        this.booksTradesForMe = [];
         this.availableBooks.map((book) => {
           // Count my trades
-          if(this.user._id == book.tradeId && this.user._id != book.owner._id) {
+          if (this.user._id == book.tradeId && this.user._id != book.owner._id) {
             this.countMyTrades++;
+            this.booksMyTrades.push(book);
           }
           //Count trades for me
-          if(this.user._id != book.tradeId && this.user._id == book.owner._id) {
+          if (this.user._id != book.tradeId && this.user._id == book.owner._id) {
             this.countTradesForMe++;
+            this.booksTradesForMe.push(book);
           }
         })
       },
@@ -155,6 +162,45 @@ export class AppService {
     } else {
       alert('Sorry, it was already chosen...');
     }
+  }
+
+  confirmRequest(index) {
+    this.http.put(this.apiUrl + 'book/trade/confirm/' +
+      this.booksTradesForMe[index]['_id'], this.booksTradesForMe[index])
+      .subscribe(
+      res => {
+        console.log(res);
+        this.getAllBooks();
+      },
+      err => {
+        console.error(err);
+      })
+  }
+
+  cancelRequest(index) {
+    this.http.put(this.apiUrl + 'book/trade/cancel/' +
+      this.booksMyTrades[index]['_id'], this.booksMyTrades[index])
+      .subscribe(
+      res => {
+        console.log(res);
+        this.getAllBooks();
+      },
+      err => {
+        console.error(err);
+      })
+  }
+
+  refuseRequest(index) {
+    this.http.put(this.apiUrl + 'book/trade/cancel/' +
+      this.booksTradesForMe[index]['_id'], this.booksTradesForMe[index])
+      .subscribe(
+      res => {
+        console.log(res);
+        this.getAllBooks();
+      },
+      err => {
+        console.error(err);
+      })
   }
 
 }

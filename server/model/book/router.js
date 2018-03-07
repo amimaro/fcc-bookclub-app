@@ -12,6 +12,10 @@ router.route('/query/:query')
 router.route('/user')
   .get((...args) => controller.findByUser(...args));
 
+router.route('/trade/confirm/:id')
+  .put((...args) => controller.confirm(...args));
+router.route('/trade/cancel/:id')
+  .put((...args) => controller.cancel(...args));
 router.route('/trade/:id')
   .put((...args) => controller.trade(...args));
 

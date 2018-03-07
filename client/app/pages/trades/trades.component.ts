@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AppService } from '../../services/app.service';
 
@@ -11,13 +11,15 @@ import { AppService } from '../../services/app.service';
 export class TradesComponent implements OnInit {
 
   title: string = "";
+  mode: string = "";
 
-  constructor(public appService: AppService, public route: ActivatedRoute) { }
+  constructor(public appService: AppService, public route: ActivatedRoute, public router: Router) { }
 
   ngOnInit() {
     this.appService.getSession().subscribe(
       res => {
         console.log(res);
+        this.mode = this.router.url.substring(1);
         // Get Data from Routing Module
         this.route.data
           .subscribe(data => {
@@ -27,16 +29,20 @@ export class TradesComponent implements OnInit {
       err => {
         console.log("Error occured");
         console.log(err);
-        this.appService.routeTo(['/'])
+        this.appService.routeTo(['/']);
       });
   }
 
-  confirmTrade(book) {
-
+  confirmTrade(index) {
+    this.appService.confirmRequest(index);
   }
 
-  cancelTrade(book) {
-
+  removeTrade(index) {
+    if(this.mode == 'mytrades'){
+      this.appService.cancelRequest(index);
+    } else {
+      this.appService.refuseRequest(index);
+    }
   }
 
 }
