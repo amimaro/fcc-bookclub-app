@@ -7,7 +7,8 @@ export class AppService {
 
   user: any;
   message: string = "";
-  apiUrl: string = 'http://localhost:8080/api/'
+  // apiUrl: string = 'http://localhost:8080/api/'
+  apiUrl: string = 'https://fcc-bookclub-app.herokuapp.com/api/';
   isLoggedIn: boolean = false;
   myBooks: any = [];
   searchedBooks: any = [];
