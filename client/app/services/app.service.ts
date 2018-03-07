@@ -77,7 +77,18 @@ export class AppService {
         .subscribe(
         res => {
           console.log(res);
-          this.searchedBooks = res;
+          this.searchedBooks = res['items'].filter((book) => {
+            if (book.volumeInfo.title == undefined ||
+              book.volumeInfo.authors == undefined ||
+              book.volumeInfo.imageLinks.smallThumbnail == undefined ||
+              book.id == undefined) {
+              return false;
+            }
+            // console.log(book)
+            return true;
+          });
+          if (this.searchedBooks.length > 5)
+            this.searchedBooks = this.searchedBooks.slice(0, 5);
         },
         err => {
           console.error(err);
@@ -129,7 +140,7 @@ export class AppService {
       })
   }
 
-  addBook(data) {
+  addBook(data, index) {
     let book = {
       title: data.volumeInfo.title,
       author: data.volumeInfo.authors[0],
@@ -142,6 +153,7 @@ export class AppService {
         alert('Book Added Successfully!');
         console.log(res);
         this.getBooksByUser();
+        this.searchedBooks.splice(index, 1);
       },
       err => {
         console.error(err);
