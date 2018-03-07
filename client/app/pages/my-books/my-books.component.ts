@@ -31,8 +31,8 @@ export class MyBooksComponent implements OnInit {
     this.appService.searchBook(this.bookSearch);
   }
 
-  addBook(book) {
-    this.appService.addBook(book);
+  addBook(book, index) {
+    this.appService.addBook(book, index);
   }
 
 }
