@@ -1,7 +1,7 @@
 <br>
 <h1 class="subtitle">{{ title }}</h1>
 <hr>
-<div class="columns is-multiline is-mobile has-text-centered" *ngIf="mode == 'mytrades'">
+<div class="columns is-multiline" *ngIf="mode == 'mytrades'">
   <div class="column is-one-quarter" *ngFor="let book of appService.booksMyTrades; let i = index">
     <div class="card">
       <div class="card-image">
@@ -27,7 +27,7 @@
     </div>
   </div>
 </div>
-<div class="columns is-multiline is-mobile has-text-centered" *ngIf="mode == 'tradesforme'">
+<div class="columns is-multiline" *ngIf="mode == 'tradesforme'">
   <div class="column is-one-quarter" *ngFor="let book of appService.booksTradesForMe; let i = index">
     <div class="card">
       <div class="card-image">
