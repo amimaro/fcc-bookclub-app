@@ -16,7 +16,7 @@
 <hr>
 <p class="subtitle">Click on <span class="icon"><i class="fa fa-exchange"></i></span> to request a trade!</p>
 <hr>
-<div class="columns is-multiline is-mobile has-text-centered">
+<div class="columns is-multiline">
   <div class="column is-one-quarter" *ngFor="let book of appService.availableBooks">
     <div class="card" *ngIf="book.owner._id != appService.user._id">
       <div class="card-image">
