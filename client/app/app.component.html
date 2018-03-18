@@ -11,22 +11,22 @@
         </div>
         <div id="navMenu" class="navbar-menu" [ngClass]="{ 'is-active' : toggleNavBar() }" (click)="isNavBar = !isNavBar">
           <div class="navbar-end">
-            <a class="navbar-item" [routerLink]="['/home']">
+            <a class="navbar-item" [routerLink]="['/home']" [routerLinkActive]="['is-active']">
               Home
             </a>
-            <a class="navbar-item" [routerLink]="['/allbooks']" *ngIf="appService.isLoggedIn">
+            <a class="navbar-item" [routerLink]="['/allbooks']" *ngIf="appService.isLoggedIn" [routerLinkActive]="['is-active']">
               All Books
             </a>
-            <a class="navbar-item" [routerLink]="['/mybooks']" *ngIf="appService.isLoggedIn">
+            <a class="navbar-item" [routerLink]="['/mybooks']" *ngIf="appService.isLoggedIn" [routerLinkActive]="['is-active']">
               My Books
             </a>
-            <a class="navbar-item" [routerLink]="['/profile']" *ngIf="appService.isLoggedIn">
+            <a class="navbar-item" [routerLink]="['/profile']" *ngIf="appService.isLoggedIn" [routerLinkActive]="['is-active']">
               Profile
             </a>
-            <a class="navbar-item" (click)="appService.logout()" *ngIf="appService.isLoggedIn">
+            <a class="navbar-item" (click)="appService.logout()" *ngIf="appService.isLoggedIn" [routerLinkActive]="['is-active']">
               Logout
             </a>
-            <a class="navbar-item" (click)="appService.loginTwitter()" *ngIf="!appService.isLoggedIn">
+            <a class="navbar-item" (click)="appService.loginTwitter()" *ngIf="!appService.isLoggedIn" [routerLinkActive]="['is-active']">
               <span class="icon"><i class="fa fa-twitter"></i></span>
               <span>Login with Twitter</span>
             </a>
