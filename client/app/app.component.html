@@ -2,7 +2,14 @@
   <div class="hero-head">
     <nav class="navbar">
       <div class="container">
-        <div id="navbarMenuHeroA" class="navbar-menu">
+        <div class="navbar-brand">
+          <span class="navbar-burger burger" data-target="navMenu" [ngClass]="{ 'is-active' : toggleNavBar() }" (click)="isNavBar = !isNavBar">
+          <span></span>
+          <span></span>
+          <span></span>
+          </span>
+        </div>
+        <div id="navMenu" class="navbar-menu" [ngClass]="{ 'is-active' : toggleNavBar() }" (click)="isNavBar = !isNavBar">
           <div class="navbar-end">
             <a class="navbar-item" [routerLink]="['/']">
               Home
