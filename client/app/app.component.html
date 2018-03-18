@@ -11,7 +11,7 @@
         </div>
         <div id="navMenu" class="navbar-menu" [ngClass]="{ 'is-active' : toggleNavBar() }" (click)="isNavBar = !isNavBar">
           <div class="navbar-end">
-            <a class="navbar-item" [routerLink]="['/']">
+            <a class="navbar-item" [routerLink]="['/home']">
               Home
             </a>
             <a class="navbar-item" [routerLink]="['/allbooks']" *ngIf="appService.isLoggedIn">
