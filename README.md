@@ -1,6 +1,6 @@
-## FreeCodeCamp - Backend Challenges
-## Dynamic Web Application Projects: [Manage a Book Trading Club](https://www.freecodecamp.org/challenges/manage-a-book-trading-club)
 ## fcc-bookclub-app
+## freeCodeCamp - Backend Challenges
+## Dynamic Web Application Projects: [Manage a Book Trading Club](https://www.freecodecamp.org/challenges/manage-a-book-trading-club)
 
 ### Getting started
 
